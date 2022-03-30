@@ -4,11 +4,45 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WeatherApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:WeatherApp.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <!--Heavily modeled after namedays app and note label app-->
+    <Page.Resources>
+        <!--Collection and template used for the scroll view-->
+        <CollectionViewSource x:Name="PlaceCollection" 
+                Source="{x:Bind WeatherViewModel.PlaceList}"></CollectionViewSource>
+        <DataTemplate x:Name="WeatherTemplate" x:DataType="models:WeatherModel">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="{x:Bind Location }"></TextBlock>
+            </StackPanel>
 
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="173*"/>
+            <ColumnDefinition Width="327*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="153*"/>
+            <RowDefinition Height="847*"/>
+        </Grid.RowDefinitions>
+        <!--Search box-->
+        <TextBox x:Name="FilterTextbox" 
+                 Text="{x:Bind WeatherViewModel.Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 PlaceholderText="Search term here..."
+                 FontSize="24" MaxHeight="60"  MaxLength="10"
+                 Grid.Row="0" Grid.Column="0"/>
+        <!--left side list of all the available places-->
+        <ScrollViewer Grid.Row="1" Grid.Column="0" >
+            <ListView ItemsSource="{Binding Source={StaticResource PlaceCollection}}"
+                      ItemTemplate="{StaticResource WeatherTemplate}"
+                      SelectedItem="{x:Bind WeatherViewModel.SelectedPlace, Mode=TwoWay}"
+                      IsItemClickEnabled="True"
+                      x:Name="scroller"
+                      >
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>
