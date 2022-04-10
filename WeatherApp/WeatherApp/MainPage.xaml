@@ -19,29 +19,44 @@
 
         </DataTemplate>
     </Page.Resources>
+
+    <!--Top Page CommandBar-->
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="Details" Label="Details" Icon="ViewAll" ToolTipService.ToolTip="Displays additional weather info about selected location"
+                              Click="Details_Click">
+            </AppBarButton>
+            <AppBarButton x:Name="About" Label="About" Icon="Help" ToolTipService.ToolTip="Displays info about this app"
+                              Click="About_Click">
+            </AppBarButton>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <!--Grid element-->
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="173*"/>
-            <ColumnDefinition Width="327*"/>
+            <ColumnDefinition Width="170*"/>
+            <ColumnDefinition Width="320*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="153*"/>
-            <RowDefinition Height="847*"/>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="1500*"/>
         </Grid.RowDefinitions>
-        <!--Search box-->
-        <TextBox x:Name="FilterTextbox" 
+        
+        <!--Filter textbox-->
+        <TextBox x:Name="FilterTextBox" Grid.Row="0" Grid.Column="0"
+                 FontSize="18" Margin="10,0,10,0" Height="40"
                  Text="{x:Bind WeatherViewModel.Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 PlaceholderText="Search term here..."
-                 FontSize="24" MaxHeight="60"  MaxLength="10"
-                 Grid.Row="0" Grid.Column="0"/>
-        <!--left side list of all the available places-->
-        <ScrollViewer Grid.Row="1" Grid.Column="0" >
+                 PlaceholderText="Search location"
+                 ToolTipService.ToolTip="Search locations list">
+        </TextBox>
+
+        <!--Locations listview-->
+        <ScrollViewer Grid.Row="1" Grid.Column="0">
             <ListView ItemsSource="{Binding Source={StaticResource PlaceCollection}}"
                       ItemTemplate="{StaticResource WeatherTemplate}"
                       SelectedItem="{x:Bind WeatherViewModel.SelectedPlace, Mode=TwoWay}"
-                      IsItemClickEnabled="True"
-                      x:Name="scroller"
-                      >
+                      x:Name="scroller">
             </ListView>
         </ScrollViewer>
     </Grid>

@@ -29,5 +29,16 @@ namespace WeatherApp
             this.InitializeComponent();
             this.WeatherViewModel = new WeatherViewModel();
         }
+
+        //Manage page navigation
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutPage));
+        }
+
+        private void Details_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(DetailsPage));
+        }
     }
 }

@@ -34,8 +34,5 @@ namespace WeatherApp
         public float slp_in { get; set; }
         public float dewpoint_c { get; set; }
         public float dewpoint_f { get; set; }
-
-
-
     }
 }
