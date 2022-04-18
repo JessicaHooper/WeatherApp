@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Models;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace WeatherApp.Viewmodel
@@ -25,6 +26,7 @@ namespace WeatherApp.Viewmodel
         public event PropertyChangedEventHandler PropertyChanged;
         public string SelectedPlaceTemp { get; set; }
         public string SelectedPlaceName { get; set; }
+        public string SelectedPlaceImg = "Images/blank.png";
 
         public DetailsPage DetailsPage { get; set; }
         public Image weatherIcon;
@@ -84,7 +86,7 @@ namespace WeatherApp.Viewmodel
                 try
                 {
                     _selectedPlace = value;
-                    DetailsPage = new DetailsPage(_selectedPlace);
+                    DetailsPage = new DetailsPage();
 
 
                     if (value == null)//if nothing selected do nothing
@@ -95,15 +97,12 @@ namespace WeatherApp.Viewmodel
                     {
                         SelectedPlaceTemp = String.Format("{0}° C", value.tempC);
                         SelectedPlaceName = value.Location;
-                        /*Uri imageUri = new Uri(value.Icon, UriKind.RelativeOrAbsolute);
-                        BitmapImage imageBitmap = new BitmapImage(imageUri);
-                        weatherIcon.Source = imageBitmap;*/
-                        weatherIcon.Source = "Image/cloudy.png";
-                        
+                        SelectedPlaceImg = value.Icon;
+
                     }
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlaceTemp"));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlaceName"));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlace.Icon"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlaceImg"));
 
                 }
                 catch (Exception ex)

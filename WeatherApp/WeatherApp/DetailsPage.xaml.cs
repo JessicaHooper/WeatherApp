@@ -30,11 +30,12 @@ namespace WeatherApp
         private Viewmodel.WeatherViewModel weatherViewModel;
         private WeatherModel selectedPlace;
 
-        /*        public DetailsPage()
-                {
-                    this.InitializeComponent();
+        public DetailsPage()
+        {
+            this.InitializeComponent();
 
-                }*/
+
+        }
 
         /*        public DetailsPage(WeatherViewModel weatherViewModel)
                 {
@@ -46,24 +47,7 @@ namespace WeatherApp
                     }
                 }*/
 
-        public DetailsPage(WeatherViewModel weatherViewModel)
-        {
-            if (weatherViewModel.SelectedPlaceName != null)
-            {
-                this.weatherViewModel = weatherViewModel;
-                Debug.WriteLine(weatherViewModel.SelectedPlaceName);
-                SelectedPlaceName.Text = weatherViewModel.SelectedPlaceName;
-            }
-        }
 
-        public DetailsPage(WeatherModel selectedPlace)
-        {
-            this.InitializeComponent();
-
-            this.selectedPlace = selectedPlace;
-            SelectedPlaceName.Text = selectedPlace.Location;
-
-        }
 
 
         //Manage page navigation

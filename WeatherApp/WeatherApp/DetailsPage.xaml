@@ -10,7 +10,7 @@
 
     <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" >
         <TextBlock Text="Additional Location Details:" FontSize="32" Margin="5"/>
-        <TextBlock x:Name="SelectedPlaceName" FontSize="22" Margin="5" TextWrapping="Wrap"/>
+        <TextBlock Text="" FontSize="22" Margin="5" TextWrapping="Wrap"/>
         
     </StackPanel>
 </Page>

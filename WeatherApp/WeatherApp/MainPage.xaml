@@ -65,7 +65,7 @@
         <!--Location Brief Overview-->
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <TextBlock Text="{x:Bind WeatherViewModel.SelectedPlaceTemp, Mode=TwoWay}" FontSize="60" TextAlignment="Center"/>
-            <Image x:Name="WeatherIcon" Width="100" Height="80" Stretch="Fill"  Margin="30"></Image>
+            <Image x:Name="WeatherIcon" Source="{x:Bind WeatherViewModel.SelectedPlaceImg, Mode=TwoWay}" Width="100" Height="80" Stretch="Fill"  Margin="30"></Image>
             <TextBlock Text="{x:Bind WeatherViewModel.SelectedPlaceName, Mode=TwoWay}" FontSize="60" TextAlignment="Center" Margin="10"></TextBlock>
         </StackPanel>
     </Grid>
