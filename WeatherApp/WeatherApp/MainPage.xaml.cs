@@ -27,7 +27,7 @@ namespace WeatherApp
     public MainPage()
         {
             this.InitializeComponent();
-            this.WeatherViewModel = new WeatherViewModel();
+            this.WeatherViewModel = new WeatherViewModel(WeatherIcon);
         }
 
         //Manage page navigation
@@ -39,6 +39,7 @@ namespace WeatherApp
         private void Details_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(DetailsPage));
+           
         }
     }
 }

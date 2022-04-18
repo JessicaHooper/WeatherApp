@@ -9,6 +9,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Models;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
+
 namespace WeatherApp.Viewmodel
 {
     public class WeatherViewModel: INotifyPropertyChanged
@@ -20,12 +23,18 @@ namespace WeatherApp.Viewmodel
         public static List<WeatherModel> _allPlaceList = new List<WeatherModel>();
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public string SelectedPlaceTemp { get; set; }
+        public string SelectedPlaceName { get; set; }
 
-        public WeatherViewModel()
+        public DetailsPage DetailsPage { get; set; }
+        public Image weatherIcon;
+
+        public WeatherViewModel(Image weatherIcon)
         {
             PlaceList = new ObservableCollection<WeatherModel>();
             getData();
-            
+            this.weatherIcon = weatherIcon;
+
         }
         public void getData()
         {   // have to use this id and key or it wont grab the data from the site
@@ -49,9 +58,9 @@ namespace WeatherApp.Viewmodel
         }
         public string imgGrabber(float temp)//if its warm use a sunny image, if its cold use a snowflake, and if neither use a cloud
         {
-            if (temp <= 0) { return "cold.png"; }
-            else if (temp >= 18 ) { return "sunny.jpg"; }
-            else { return "cloudy.png"; }
+            if (temp <= 0) { return "Images/cold.png"; }
+            else if (temp >= 18 ) { return "Images/sunny.png"; }
+            else { return "Images/cloudy.png"; }
         }
         public async void makeModel(string url,string placeName)//makes a model and adds it to the lists
         {
@@ -64,6 +73,7 @@ namespace WeatherApp.Viewmodel
                 WeatherModel current = new WeatherModel(data.lat, data.lon, placeName, data.temp_c, data.temp_f, data.humid_pct, data.wx_desc, img);//set up the model
                 PlaceList.Add(current);//add it to the lists
                 _allPlaceList.Add(current);
+                
             }
         }
         public WeatherModel SelectedPlace//changes the view to hold information about the current place
@@ -74,12 +84,27 @@ namespace WeatherApp.Viewmodel
                 try
                 {
                     _selectedPlace = value;
+                    DetailsPage = new DetailsPage(_selectedPlace);
 
 
-                    if (value != null)//if nothing selected do nothing
+                    if (value == null)//if nothing selected do nothing
                     {
 
                     }
+                    else
+                    {
+                        SelectedPlaceTemp = String.Format("{0}° C", value.tempC);
+                        SelectedPlaceName = value.Location;
+                        /*Uri imageUri = new Uri(value.Icon, UriKind.RelativeOrAbsolute);
+                        BitmapImage imageBitmap = new BitmapImage(imageUri);
+                        weatherIcon.Source = imageBitmap;*/
+                        weatherIcon.Source = "Image/cloudy.png";
+                        
+                    }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlaceTemp"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlaceName"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlace.Icon"));
+
                 }
                 catch (Exception ex)
                 {
@@ -87,6 +112,8 @@ namespace WeatherApp.Viewmodel
                 }
             }
         }
+
+ 
         public string Filter//used for searching also from namedays app
         {
             get { return _filter; }
