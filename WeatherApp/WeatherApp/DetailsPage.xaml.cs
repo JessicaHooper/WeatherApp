@@ -27,13 +27,14 @@ namespace WeatherApp
     /// </summary>
     public sealed partial class DetailsPage : Page
     {
+        internal static WeatherViewModel wvm;
         private Viewmodel.WeatherViewModel weatherViewModel;
         private WeatherModel selectedPlace;
 
         public DetailsPage()
         {
             this.InitializeComponent();
-
+            this.weatherViewModel = wvm;
 
         }
 

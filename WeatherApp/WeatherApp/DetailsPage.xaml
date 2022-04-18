@@ -10,7 +10,7 @@
 
     <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" >
         <TextBlock Text="Additional Location Details:" FontSize="32" Margin="5"/>
-        <TextBlock Text="" FontSize="22" Margin="5" TextWrapping="Wrap"/>
+        <TextBlock Text="{x:Bind weatherViewModel.SelectedPlaceName}" FontSize="22" Margin="5" TextWrapping="Wrap"/>
         
     </StackPanel>
 </Page>

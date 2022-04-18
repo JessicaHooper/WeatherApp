@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WeatherApp.Viewmodel;
+using System.Diagnostics;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace WeatherApp
@@ -27,7 +28,7 @@ namespace WeatherApp
     public MainPage()
         {
             this.InitializeComponent();
-            this.WeatherViewModel = new WeatherViewModel(WeatherIcon);
+            this.WeatherViewModel = new WeatherViewModel();
         }
 
         //Manage page navigation
@@ -38,6 +39,8 @@ namespace WeatherApp
 
         private void Details_Click(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("hellop");
+            DetailsPage.wvm = WeatherViewModel;
             Frame.Navigate(typeof(DetailsPage));
            
         }

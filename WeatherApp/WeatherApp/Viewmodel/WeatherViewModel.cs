@@ -31,11 +31,11 @@ namespace WeatherApp.Viewmodel
         public DetailsPage DetailsPage { get; set; }
         public Image weatherIcon;
 
-        public WeatherViewModel(Image weatherIcon)
+        public WeatherViewModel()
         {
             PlaceList = new ObservableCollection<WeatherModel>();
             getData();
-            this.weatherIcon = weatherIcon;
+            
 
         }
         public void getData()
