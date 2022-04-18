@@ -10,7 +10,16 @@
 
     <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" >
         <TextBlock Text="Additional Location Details:" FontSize="32" Margin="5"/>
-        <TextBlock Text="{x:Bind weatherViewModel.SelectedPlaceName}" FontSize="22" Margin="5" TextWrapping="Wrap"/>
-        
+        <TextBlock Text="{x:Bind weatherViewModel.SelectedPlaceName}" FontSize="30" Margin="5" TextAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Text="Longitude: " FontSize="28" Margin="5"/>
+        <TextBlock Text="{x:Bind weatherViewModel.SelectedPlaceLon}" FontSize="30" Margin="5" TextAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Text="Latitude: " FontSize="28" Margin="5"/>
+        <TextBlock Text="{x:Bind weatherViewModel.SelectedPlaceLat}" FontSize="30" Margin="5" TextAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Text="Temperature in Celsius: " FontSize="28" Margin="5"/>
+        <TextBlock Text="{x:Bind weatherViewModel.SelectedPlaceTemp}" FontSize="30" Margin="5" TextAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Text="Temperatue in Fahrenheit: " FontSize="28" Margin="5"/>
+        <TextBlock Text="{x:Bind weatherViewModel.SelectedPlaceTempF}" FontSize="30" Margin="5" TextAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Text="Percent Humidity: " FontSize="28" Margin="5"/>
+        <TextBlock Text="{x:Bind weatherViewModel.SelectedPlaceHum}" FontSize="30" Margin="5" TextAlignment="Center" TextWrapping="Wrap"/>
     </StackPanel>
 </Page>

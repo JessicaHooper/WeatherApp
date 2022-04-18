@@ -39,7 +39,6 @@ namespace WeatherApp
 
         private void Details_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("hellop");
             DetailsPage.wvm = WeatherViewModel;
             Frame.Navigate(typeof(DetailsPage));
            

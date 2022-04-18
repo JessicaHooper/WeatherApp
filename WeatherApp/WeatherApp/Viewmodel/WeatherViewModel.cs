@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using WeatherApp.Commands;
 using WeatherApp.Models;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -24,7 +25,12 @@ namespace WeatherApp.Viewmodel
         public static List<WeatherModel> _allPlaceList = new List<WeatherModel>();
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public ImageCommand ImageCommand { get; }
         public string SelectedPlaceTemp { get; set; }
+        public string SelectedPlaceTempF { get; set; }
+        public string SelectedPlaceLon { get; set; }
+        public string SelectedPlaceLat { get; set; }
+        public string SelectedPlaceHum { get; set; }
         public string SelectedPlaceName { get; set; }
         public string SelectedPlaceImg = "Images/blank.png";
 
@@ -35,7 +41,7 @@ namespace WeatherApp.Viewmodel
         {
             PlaceList = new ObservableCollection<WeatherModel>();
             getData();
-            
+            ImageCommand = new ImageCommand(this);
 
         }
         public void getData()
@@ -88,22 +94,25 @@ namespace WeatherApp.Viewmodel
                     _selectedPlace = value;
                     DetailsPage = new DetailsPage();
 
-
                     if (value == null)//if nothing selected do nothing
                     {
 
                     }
                     else
                     {
-                        SelectedPlaceTemp = String.Format("{0}° C", value.tempC);
+                        SelectedPlaceTemp = String.Format("{0} °C", value.tempC);
+                        SelectedPlaceTempF = String.Format("{0} °F", value.tempF);
                         SelectedPlaceName = value.Location;
                         SelectedPlaceImg = value.Icon;
+                        SelectedPlaceHum = String.Format("{0}%", value.humidityPCT);
+                        SelectedPlaceLon = String.Format("{0}", value.Lon);
+                        SelectedPlaceLat = String.Format("{0}", value.Lat);
 
                     }
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlaceTemp"));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlaceName"));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedPlaceImg"));
-
+                    ImageCommand.Fire_CanExecuteChanged();
                 }
                 catch (Exception ex)
                 {

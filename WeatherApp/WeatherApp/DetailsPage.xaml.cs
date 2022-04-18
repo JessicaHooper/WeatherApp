@@ -29,27 +29,12 @@ namespace WeatherApp
     {
         internal static WeatherViewModel wvm;
         private Viewmodel.WeatherViewModel weatherViewModel;
-        private WeatherModel selectedPlace;
-
         public DetailsPage()
         {
             this.InitializeComponent();
             this.weatherViewModel = wvm;
 
         }
-
-        /*        public DetailsPage(WeatherViewModel weatherViewModel)
-                {
-                    if (weatherViewModel.SelectedPlace != null)
-                    {
-                        this.weatherViewModel = weatherViewModel;
-                        Debug.WriteLine(weatherViewModel.SelectedPlaceName);
-                        SelectedPlaceName.Text = weatherViewModel.SelectedPlaceName;
-                    }
-                }*/
-
-
-
 
         //Manage page navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
