@@ -57,7 +57,7 @@ namespace WeatherApp.Viewmodel
             makeModel("http://api.weatherunlocked.com/api/current/ca.B2W%202W5?app_id=7ca54e7f&app_key=c3a446ab3f5d1f0c51233b4ef07ffa90", "Nova Scotia");
             makeModel("http://api.weatherunlocked.com/api/current/us.10001?app_id=7ca54e7f&app_key=c3a446ab3f5d1f0c51233b4ef07ffa90", "New York");
             makeModel("http://api.weatherunlocked.com/api/current/51.50,-0.12?app_id=7ca54e7f&app_key=c3a446ab3f5d1f0c51233b4ef07ffa90", "London");
-            makeModel("http://api.weatherunlocked.com/api/current/50.84,4.35?app_id=7ca54e7f&app_key=c3a446ab3f5d1f0c51233b4ef07ffa90", "Brussels");
+            makeModel("http://api.weatherunlocked.com/api/current/62.03,129.74?app_id=7ca54e7f&app_key=c3a446ab3f5d1f0c51233b4ef07ffa90", "Yakutsk");
             makeModel("http://api.weatherunlocked.com/api/current/35.67,139.65?app_id=7ca54e7f&app_key=c3a446ab3f5d1f0c51233b4ef07ffa90", "Tokyo");
             makeModel("http://api.weatherunlocked.com/api/current/6.20,106.84?app_id=7ca54e7f&app_key=c3a446ab3f5d1f0c51233b4ef07ffa90", "Jakarta");
             makeModel("http://api.weatherunlocked.com/api/current/43.65,49.38?app_id=7ca54e7f&app_key=c3a446ab3f5d1f0c51233b4ef07ffa90", "Toronto");

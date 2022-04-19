@@ -27,7 +27,7 @@ namespace WeatherApp.Commands
         }
         public bool CanExecute(object parameter)
         {
-            return weatherViewModel != null;
+            return weatherViewModel.SelectedPlace != null;
         }
 
         public async void Execute(object parameter)
